@@ -18,9 +18,14 @@ class Menu extends StatelessWidget {
             margin: const EdgeInsets.only(left: 15, right: 15),
             child: Row(
               children: [
-                Container(
-                  height: 35,
-                  child: Image.asset('assets/images/backbutton.png'),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                    height: 35,
+                    child: Image.asset('assets/images/backbutton.png'),
+                  ),
                 ),
                 const Spacer(),
                 Container(
@@ -34,11 +39,12 @@ class Menu extends StatelessWidget {
           children: [
             Expanded(
               child: Card(
+                margin: EdgeInsets.only(top: 30, left: 10, right: 10),
                 color: Colors.white,
                 child: ListView.separated(
                   itemCount: menuItems.length,
                   separatorBuilder: (context, index) => const Divider(
-                    height: .5,
+                    height:1,
                     color: Color(0xff3FD47A),
                     endIndent: 20,
                     indent: 20,
@@ -50,7 +56,8 @@ class Menu extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 30.0,top: 20), // Add space at the bottom
+              padding: const EdgeInsets.only(
+                  bottom: 30.0, top: 20), // Add space at the bottom
               child: Container(
                 height: 55,
                 width: 250,
