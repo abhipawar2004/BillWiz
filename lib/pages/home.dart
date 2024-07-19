@@ -35,7 +35,7 @@ class Home extends StatelessWidget {
                     return  Homepage(number:num[index]);
                   },
                 ),
-              )
+              ),
             ],
           ),
         ),
