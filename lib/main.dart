@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/home.dart';
+import 'package:flutter_app/pages/menu.dart';
 
 
 import 'package:flutter_app/pages/splash_screen.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food App',
-      home:SplashScreen(),
+      home:Menu(),
       // SplashScreen(),
         // body: ChowMeinForParcel(),
         // body: ChowMeinForTable(),
