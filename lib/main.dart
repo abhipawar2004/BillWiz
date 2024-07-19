@@ -16,21 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food App',
-      home:SplashScreen(),
-      // SplashScreen(),
-        // body: ChowMeinForParcel(),
-        // body: ChowMeinForTable(),
-        // body: ChowMeinReceipt(),
-        // body: ChowMeinReceipt1(),
-        // body: Home(),
-        // body: ManchurianForParcel(),
-        // body: ManchurianForTable(),
-        // body: ManchurianReceipt(),
-        // body: ManchurianReceipt1(),
-        // body: Menu(),
-        // body: Parcel(),
-        
-        // body: Table(),
+      home:Table(),
+     
 
       
     );
