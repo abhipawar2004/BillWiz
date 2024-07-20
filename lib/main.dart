@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/home.dart';
-import 'package:flutter_app/pages/menu.dart';
 
 
 import 'package:flutter_app/pages/splash_screen.dart';
+
 
 
 void main() => runApp(const MyApp());
@@ -11,15 +10,12 @@ void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food App',
-      home:Table(),
-     
-
-      
+      home: SplashScreen(),
     );
   }
 }
