@@ -37,7 +37,7 @@ class Home extends StatelessWidget {
                       crossAxisSpacing: 10,
                         crossAxisCount: 3),
                     itemBuilder: (context, index) {
-                      return  Homepage(number:num[index]);
+                      return  Homepage2(number:num[index]);
                     },
                   ),
                 ),
