@@ -32,7 +32,7 @@ class Tables extends StatelessWidget {
           ),
         ),
         body: Container(
-          margin: EdgeInsets.only(left: 20, right: 20),
+          margin: EdgeInsets.only(left: 20, right: 20,top: 20),
           child: Column(
             children: [
               Container(
@@ -40,7 +40,7 @@ class Tables extends StatelessWidget {
                 width: 378,
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(10),border: Border.all(width:2,color: Color(0xff128B42),),),
-                    child: Icon(Icons.search,
+                    child: Icon(Icons.phone,
                     color: Colors.black,),
               ),
             ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/tables.dart';
 import 'package:flutter_app/widgets/Home1.dart';
 import 'package:flutter_app/widgets/Home2.dart';
 
@@ -24,16 +25,21 @@ class Home extends StatelessWidget {
               const Home1P(),
               const SizedBox(height: 20),
               Expanded(
-                child: GridView.builder(
-                  itemCount: num.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 1,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                      crossAxisCount: 3),
-                  itemBuilder: (context, index) {
-                    return  Homepage(number:num[index]);
-                  },
+                child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Tables()),);
+                },
+                  child: GridView.builder(
+                    itemCount: num.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 1,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                        crossAxisCount: 3),
+                    itemBuilder: (context, index) {
+                      return  Homepage(number:num[index]);
+                    },
+                  ),
                 ),
               ),
             ],
