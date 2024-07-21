@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage2 extends StatelessWidget {
   final int number;
 
-  Homepage({required this.number});
+  Homepage2({required this.number});
 
   @override
   Widget build(BuildContext context) {
