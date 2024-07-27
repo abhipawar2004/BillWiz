@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/widgets.dart';
 import 'package:flutter_app/model/Item.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
@@ -48,126 +48,135 @@ class _TableItemsState extends State<TableItems> {
   @override
   Widget build(BuildContext context) {
     final item = widget.item;
-    return SingleChildScrollView(
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(width: 2, color: const Color(0xff128B42)),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          children: [
-            CircleAvatar(
-              backgroundColor: Colors.white,
-              backgroundImage: AssetImage(item.imagepath),
-              radius: 35,
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(width: 2, color: const Color(0xff128B42)),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        children: [
+          CircleAvatar(
+            backgroundColor: Colors.white,
+            backgroundImage: AssetImage(item.imagepath),
+            radius: 35,
+          ),
+          Text(
+            item.name,
+            style: GoogleFonts.getFont(
+              'Jost',
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
             ),
-            Text(
-              item.name,
-              style: GoogleFonts.getFont(
-                'Jost',
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            'Choose Quantity (F)',
+            style: GoogleFonts.getFont(
+              'Jaldi',
+              fontSize: 8,
             ),
-            Text(
-              'Choose Quantity (F)',
-              style: GoogleFonts.getFont(
-                'Jaldi',
-                fontSize: 08,
-              ),
-            ),
-            Container(
-              height: 40,
-              width: double.infinity,
-              color: Colors.black26,
-              child: StepperSwipe(
-                counterTextColor: Colors.black,
-                iconsColor: Colors.green,
-                withFastCount: true,
-                withPlusMinus: true,
-                initialValue: 0,
-                withSpring: true,
-                speedTransitionLimitCount: 3, //Trigger count for fast counting
-                onChanged: (int value) => print('new value $value'),
-                firstIncrementDuration: Duration(
-                    milliseconds: 250), //Unit time before fast counting
-                secondIncrementDuration: Duration(
-                    milliseconds: 100), //Unit time during fast counting
-                direction: Axis.horizontal,
-                dragButtonColor: Colors.blueAccent,
-                maxValue: 50,
-                minValue: -10, stepperValue: 0,
-              ),
-            ),
+          ),
+          Container(
+            height: 40,
+            color: Colors.black26,
+            child: Row(
+              children: [
+                IconButton(
+                  color:Color(0xff128B42) ,
+                  icon: Icon(
 
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     IconButton(
-            //       onPressed: _decrementQuantitySmall,
-            //       icon:  Icon(Icons.remove_circle),
-            //       color: Colors.green,
-            //     ),
-            //     Text(
-            //       '$quantitySmall',
-            //       style:  TextStyle(fontSize: 18),
-            //     ),
-            //     IconButton(
-            //       onPressed: _incrementQuantitySmall,
-            //       icon:  Icon(Icons.add),
-            //       color: Colors.green,
-            //     ),
-            //   ],
-            // ),
-            Text(
-              'Choose Quantity (H)',
-              style: GoogleFonts.getFont('Jaldi', fontSize: 08),
+                    Icons.remove,
+                    color: Colors.black,
+                    size: 24,
+                  ),
+                  onPressed: _decrementQuantitySmall,
+                ),
+                Expanded(
+                  child: StepperSwipe(
+                    counterTextColor: Colors.white,
+                    withBackground: true,
+                    iconsColor: Color(0xff128B42),
+                    withFastCount: true,
+                    withPlusMinus: true,
+                    initialValue: 0,
+                    withSpring: true,
+                    speedTransitionLimitCount: 3, // Trigger count for fast counting
+                    onChanged: (int value) => setState(() {
+                      quantitySmall = value;
+                    }),
+                    firstIncrementDuration: Duration(milliseconds: 250), // Unit time before fast counting
+                    secondIncrementDuration: Duration(milliseconds: 100), // Unit time during fast counting
+                    direction: Axis.horizontal,
+                    dragButtonColor: Color(0xff128B42),
+                    maxValue: 50,
+                    minValue: 0,
+                    stepperValue: quantitySmall,
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                    size: 24,
+                  ),
+                  onPressed: _incrementQuantitySmall,
+                ),
+              ],
             ),
-            Container(
-              height: 40,
-              width: double.infinity,
-              color: Colors.black26,
-              child: StepperSwipe(
-                withBackground: true,
-                counterTextColor: Colors.black,
-                iconsColor: Color(0xFF128B42),
-                initialValue: 0,
-                speedTransitionLimitCount: 3, //Trigger count for fast counting
-                onChanged: (int value) => print('new value $value'),
-                firstIncrementDuration: Duration(
-                    milliseconds: 250), //Unit time before fast counting
-                secondIncrementDuration: Duration(
-                    milliseconds: 100), //Unit time during fast counting
-                direction: Axis.horizontal,
-                dragButtonColor: Colors.blueAccent,
-                maxValue: 50,
-                minValue: -10, stepperValue: 0,
-              ),
+          ),
+          Text(
+            'Choose Quantity (H)',
+            style: GoogleFonts.getFont('Jaldi', fontSize: 8),
+          ),
+          Container(
+            height: 40,
+            color: Colors.black26,
+            child: Row(
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.remove,
+                    color: Colors.white,
+                    size: 24,
+                  ),
+                  onPressed: _decrementQuantityLarge,
+                ),
+                Expanded(
+                  child: StepperSwipe(
+                    counterTextColor: Colors.white,
+                    withBackground: true,
+                    iconsColor: Color(0xff128B42),
+                    withFastCount: true,
+                    withPlusMinus: true,
+                    initialValue: 0,
+                    withSpring: true,
+                    speedTransitionLimitCount: 3, // Trigger count for fast counting
+                    onChanged: (int value) => setState(() {
+                      quantityLarge = value;
+                    }),
+                    firstIncrementDuration: Duration(milliseconds: 250), // Unit time before fast counting
+                    secondIncrementDuration: Duration(milliseconds: 100), // Unit time during fast counting
+                    direction: Axis.horizontal,
+                    dragButtonColor: Color(0xff128B42),
+                    maxValue: 50,
+                    minValue: 0,
+                    stepperValue: quantityLarge,
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                    size: 24,
+                  ),
+                  onPressed: _incrementQuantityLarge,
+                ),
+              ],
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     IconButton(
-            //       onPressed: _decrementQuantityLarge,
-            //       icon: const Icon(Icons.remove),
-            //       color: Colors.green,
-            //     ),
-            //     Text(
-            //       '$quantityLarge',
-            //       style: const TextStyle(fontSize: 18),
-            //     ),
-            //     IconButton(
-            //       onPressed: _incrementQuantityLarge,
-            //       icon: const Icon(Icons.add),
-            //       color: Colors.green,
-            //     ),
-            //   ],
-            // ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
