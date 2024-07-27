@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_app/model/Item.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
@@ -49,6 +48,7 @@ class _TableItemsState extends State<TableItems> {
   Widget build(BuildContext context) {
     final item = widget.item;
     return Container(
+      padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
         border: Border.all(width: 2, color: const Color(0xff128B42)),
         borderRadius: BorderRadius.circular(12),
@@ -80,20 +80,19 @@ class _TableItemsState extends State<TableItems> {
             ),
           ),
           Container(
-            color: Colors.green[100],
-            height:40,
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: Colors.green[100],
+              borderRadius: BorderRadius.all(Radius.circular(9)),
+            ),
+            height: 40,
             width: double.infinity,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButton(
-                  color: Color(0xff128B42),
-                  icon: Icon(
-                    Icons.run_circle,
-                    color: Color(0xff128B42), // Changed to green
-                    size: 24,
-                  ),
-                  onPressed: _decrementQuantitySmall,
+                InkWell(
+                  onTap: _decrementQuantitySmall,
+                  child: Image.asset('assets/images/minus.png', height: 30),
                 ),
                 Expanded(
                   child: StepperSwipe(
@@ -118,13 +117,9 @@ class _TableItemsState extends State<TableItems> {
                     stepperValue: quantitySmall,
                   ),
                 ),
-                IconButton(
-                  icon: Icon(
-                    Icons.add,
-                    color: Color(0xff128B42), // Changed to green
-                    size: 24,
-                  ),
-                  onPressed: _incrementQuantitySmall,
+                InkWell(
+                  onTap: _incrementQuantitySmall,
+                  child: Image.asset('assets/images/plus.png', height: 30),
                 ),
               ],
             ),
@@ -134,22 +129,25 @@ class _TableItemsState extends State<TableItems> {
             style: GoogleFonts.getFont('Jaldi', fontSize: 8),
           ),
           Container(
-            color: Colors.green[100],
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: Colors.green[100],
+              borderRadius: BorderRadius.all(Radius.circular(9)),
+            ),
             height: 40,
+            width: double.infinity,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButton(
-                  icon: Icon(
-                    Icons.remove,
-                    color: Colors.white, // Kept white for dark background
-                    size: 24,
-                  ),
-                  onPressed: _decrementQuantityLarge,
+                InkWell(
+                  onTap: _decrementQuantityLarge,
+                  child: Image.asset('assets/images/minus.png', height: 30),
                 ),
                 Expanded(
                   child: StepperSwipe(
                     counterTextColor: Colors.white,
                     withBackground: true,
+                    withNaturalNumbers: true,
                     iconsColor: Color(0xff128B42),
                     withFastCount: true,
                     withPlusMinus: true,
@@ -168,13 +166,9 @@ class _TableItemsState extends State<TableItems> {
                     stepperValue: quantityLarge,
                   ),
                 ),
-                IconButton(
-                  icon: Icon(
-                    Icons.add,
-                    color: Colors.white, // Kept white for dark background
-                    size: 24,
-                  ),
-                  onPressed: _incrementQuantityLarge,
+                InkWell(
+                  onTap: _incrementQuantityLarge,
+                  child: Image.asset('assets/images/plus.png', height: 30),
                 ),
               ],
             ),
