@@ -54,11 +54,12 @@ class _TableItemsState extends State<TableItems> {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           CircleAvatar(
             backgroundColor: Colors.white,
             backgroundImage: AssetImage(item.imagepath),
-            radius: 35,
+            radius: 40,
           ),
           Text(
             item.name,
@@ -79,16 +80,17 @@ class _TableItemsState extends State<TableItems> {
             ),
           ),
           Container(
-            height: 40,
-            color: Colors.black26,
+            color: Colors.green[100],
+            height:40,
+            width: double.infinity,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
-                  color:Color(0xff128B42) ,
+                  color: Color(0xff128B42),
                   icon: Icon(
-
-                    Icons.remove,
-                    color: Colors.black,
+                    Icons.run_circle,
+                    color: Color(0xff128B42), // Changed to green
                     size: 24,
                   ),
                   onPressed: _decrementQuantitySmall,
@@ -97,17 +99,18 @@ class _TableItemsState extends State<TableItems> {
                   child: StepperSwipe(
                     counterTextColor: Colors.white,
                     withBackground: true,
+                    withNaturalNumbers: true,
                     iconsColor: Color(0xff128B42),
                     withFastCount: true,
                     withPlusMinus: true,
                     initialValue: 0,
                     withSpring: true,
-                    speedTransitionLimitCount: 3, // Trigger count for fast counting
+                    speedTransitionLimitCount: 3,
                     onChanged: (int value) => setState(() {
                       quantitySmall = value;
                     }),
-                    firstIncrementDuration: Duration(milliseconds: 250), // Unit time before fast counting
-                    secondIncrementDuration: Duration(milliseconds: 100), // Unit time during fast counting
+                    firstIncrementDuration: Duration(milliseconds: 250),
+                    secondIncrementDuration: Duration(milliseconds: 100),
                     direction: Axis.horizontal,
                     dragButtonColor: Color(0xff128B42),
                     maxValue: 50,
@@ -118,7 +121,7 @@ class _TableItemsState extends State<TableItems> {
                 IconButton(
                   icon: Icon(
                     Icons.add,
-                    color: Colors.white,
+                    color: Color(0xff128B42), // Changed to green
                     size: 24,
                   ),
                   onPressed: _incrementQuantitySmall,
@@ -131,14 +134,14 @@ class _TableItemsState extends State<TableItems> {
             style: GoogleFonts.getFont('Jaldi', fontSize: 8),
           ),
           Container(
+            color: Colors.green[100],
             height: 40,
-            color: Colors.black26,
             child: Row(
               children: [
                 IconButton(
                   icon: Icon(
                     Icons.remove,
-                    color: Colors.white,
+                    color: Colors.white, // Kept white for dark background
                     size: 24,
                   ),
                   onPressed: _decrementQuantityLarge,
@@ -152,12 +155,12 @@ class _TableItemsState extends State<TableItems> {
                     withPlusMinus: true,
                     initialValue: 0,
                     withSpring: true,
-                    speedTransitionLimitCount: 3, // Trigger count for fast counting
+                    speedTransitionLimitCount: 3,
                     onChanged: (int value) => setState(() {
                       quantityLarge = value;
                     }),
-                    firstIncrementDuration: Duration(milliseconds: 250), // Unit time before fast counting
-                    secondIncrementDuration: Duration(milliseconds: 100), // Unit time during fast counting
+                    firstIncrementDuration: Duration(milliseconds: 250),
+                    secondIncrementDuration: Duration(milliseconds: 100),
                     direction: Axis.horizontal,
                     dragButtonColor: Color(0xff128B42),
                     maxValue: 50,
@@ -168,7 +171,7 @@ class _TableItemsState extends State<TableItems> {
                 IconButton(
                   icon: Icon(
                     Icons.add,
-                    color: Colors.white,
+                    color: Colors.white, // Kept white for dark background
                     size: 24,
                   ),
                   onPressed: _incrementQuantityLarge,
