@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/model/Items.dart';
 import 'package:flutter_app/widgets/table_items.dart';
 
-class Tables extends StatelessWidget {
+class Tables extends StatefulWidget {
   const Tables({super.key});
 
+  @override
+  State<Tables> createState() => _TablesState();
+}
+
+class _TablesState extends State<Tables> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -65,8 +70,8 @@ class Tables extends StatelessWidget {
                 child: GridView.builder(
                   itemCount: menuItems.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing:2,
-                      childAspectRatio: .55,
+                      mainAxisSpacing:20,
+                      childAspectRatio: .70,
                       crossAxisSpacing: 30,
                       crossAxisCount: 2),
                   itemBuilder: (context, index) {
