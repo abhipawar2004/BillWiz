@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/model/Items.dart';
+import 'package:flutter_app/widgets/cart_summary.dart';
 import 'package:flutter_app/widgets/table_items.dart';
+
+import '../model/cart.dart';
 
 class Tables extends StatefulWidget {
   const Tables({super.key});
@@ -10,6 +13,18 @@ class Tables extends StatefulWidget {
 }
 
 class _TablesState extends State<Tables> {
+    final Cart cart = Cart();
+
+  void addToCart(String name, int quantity, double totalprice) {
+    setState(() {
+      cart.addItem(name, quantity, totalprice);
+    });
+  }
+
+  void checkout() {
+    // Implement checkout logic
+    print('Checkout pressed');
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -79,6 +94,7 @@ class _TablesState extends State<Tables> {
                   },
                 ),
               ),
+              CartSummary(itemCount: cart.totalCount, totalPrice: cart.totalPrice, onCheckout:checkout),
               const SizedBox(height: 50),
             ],
           ),
