@@ -1,34 +1,28 @@
 import 'package:flutter/material.dart';
 
-class CartSummary extends StatelessWidget {
-  final int itemCount;
-  final double totalPrice;
-  final VoidCallback onCheckout;
+import '../model/cart.dart';
 
-  const CartSummary({
-    Key? key,
-    required this.itemCount,
-    required this.totalPrice,
-    required this.onCheckout,
-  }) : super(key: key);
+class CartSummary extends StatelessWidget {
+  final List<CartItem> cartItems;
+
+  const CartSummary({required this.cartItems});
 
   @override
   Widget build(BuildContext context) {
     
+    int totalItems = cartItems.fold(0, (sum, item) => sum + item.quantity);
     return Container(
-      padding: EdgeInsets.all(16),
-      color: Color(0xff128B42),
+      color: Colors.green,
+      padding: EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-          '0 Items Added (\$0)',style: TextStyle(color: Colors.white),
+            '$totalItems Items Added ()',
+           
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
-          ElevatedButton(
-            onPressed: onCheckout,
-            child: Text('Checkout'),
-            style: ElevatedButton.styleFrom(foregroundColor: Color(0xff128B42), backgroundColor: Colors.white),
-          ),
+          Icon(Icons.arrow_forward, color: Colors.white),
         ],
       ),
     );

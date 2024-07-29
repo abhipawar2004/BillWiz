@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/model/Items.dart';
-import 'package:flutter_app/widgets/cart_summary.dart';
-import 'package:flutter_app/widgets/table_items.dart';
 
+import '../model/Item.dart';
+import '../model/Items.dart';
 import '../model/cart.dart';
+import '../widgets/cart_summary.dart';
+import '../widgets/table_items.dart';
 
 class Tables extends StatefulWidget {
   const Tables({super.key});
@@ -13,18 +14,24 @@ class Tables extends StatefulWidget {
 }
 
 class _TablesState extends State<Tables> {
-    final Cart cart = Cart();
+  final List<CartItem> _cartItems = [];
 
-  void addToCart(String name, int quantity, double totalprice) {
+  void _addItemToCart(Items item, int quantity, bool isHalf) {
     setState(() {
-      cart.addItem(name, quantity, totalprice);
+      var existingItem = _cartItems.firstWhere(
+        (cartItem) => cartItem.item.name == item.name && cartItem.item.hasHalfOption == isHalf,
+        orElse: () => CartItem(item: item, quantity: 0),
+      );
+      if (existingItem.quantity == 0) {
+        _cartItems.add(CartItem(item: item, quantity: quantity));
+      } else {
+        existingItem.quantity += quantity;
+      }
     });
   }
 
-  void checkout() {
-    // Implement checkout logic
-    print('Checkout pressed');
-  }
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -85,16 +92,16 @@ class _TablesState extends State<Tables> {
                 child: GridView.builder(
                   itemCount: menuItems.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing:20,
+                      mainAxisSpacing: 20,
                       childAspectRatio: .70,
                       crossAxisSpacing: 30,
                       crossAxisCount: 2),
                   itemBuilder: (context, index) {
-                    return  TableItems(menuItems[index]);
+                    return TableItems(menuItems[index], _addItemToCart);
                   },
                 ),
               ),
-              CartSummary(itemCount: cart.totalCount, totalPrice: cart.totalPrice, onCheckout:checkout),
+              CartSummary(cartItems: _cartItems),
               const SizedBox(height: 50),
             ],
           ),
