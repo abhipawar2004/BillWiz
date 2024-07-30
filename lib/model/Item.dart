@@ -7,5 +7,5 @@ class Items {
 
   Items(this.name, this.fullPrice, this.halfPrice, this.hasHalfOption,this.imagepath);
 
-  double? get price => null;
+ 
 }
