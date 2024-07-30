@@ -15,7 +15,7 @@ class CartSummary extends StatelessWidget {
       color: Colors.green,
       padding: EdgeInsets.all(10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             '$totalItems Items Added ()',

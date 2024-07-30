@@ -14,7 +14,7 @@ class Tables extends StatefulWidget {
 }
 
 class _TablesState extends State<Tables> {
-  final List<CartItem> _cartItems = [];
+  final List<CartItem> _cartItems = []; 
 
   void _addItemToCart(Items item, int quantity, bool isHalf) {
     setState(() {

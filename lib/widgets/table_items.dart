@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/model/Items.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 
@@ -35,7 +35,8 @@ class _TableItemsState extends State<TableItems> {
             children: [
               CircleAvatar(
                 backgroundColor: Colors.white,
-                backgroundImage: AssetImage(item.imagepath),
+                backgroundImage: AssetImage(item.imagepath,
+                ),
                 radius: 40,
               ),
               Text(
