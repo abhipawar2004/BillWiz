@@ -31,7 +31,8 @@ class CartSummary extends StatelessWidget {
             '$totalItems Items Added (₹${totalPrice.toStringAsFixed(2)})',
             style: GoogleFonts.getFont('Jost',color: Color(0xffFFFFFF),fontWeight: FontWeight.w600),
           ),
-          Image.asset('assets/images/vector.png')
+          Container(
+            child: Image.asset('assets/images/vector.png'))
 
         ],
       ),
