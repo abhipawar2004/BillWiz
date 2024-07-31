@@ -14,22 +14,24 @@ class Tables extends StatefulWidget {
 }
 
 class _TablesState extends State<Tables> {
-  final List<CartItem> _cartItems = []; 
+  final List<CartItem> _cartItems = [];
 
   void _addItemToCart(Items item, int quantity, bool isHalf) {
     setState(() {
       var existingItem = _cartItems.firstWhere(
-        (cartItem) => cartItem.item.name == item.name && cartItem.item.hasHalfOption == isHalf,
-        orElse: () => CartItem(item: item, quantity: 0),
+        (cartItem) => cartItem.item.name == item.name && cartItem.isHalf == isHalf,
+        orElse: () => CartItem(item: item, quantity: 0, isHalf: isHalf),
       );
-      if (existingItem.quantity == 0) {
-        _cartItems.add(CartItem(item: item, quantity: quantity));
+
+      if (existingItem.quantity == 0 && quantity > 0) {
+        _cartItems.add(CartItem(item: item, quantity: quantity, isHalf: isHalf));
+      } else if (quantity > 0) {
+        existingItem.quantity = quantity;
       } else {
-        existingItem.quantity += quantity;
+        _cartItems.remove(existingItem);
       }
     });
   }
-
 
 
   @override
@@ -101,6 +103,7 @@ class _TablesState extends State<Tables> {
                   },
                 ),
               ),
+              _cartItems.isEmpty?Container():
               CartSummary(cartItems: _cartItems),
               const SizedBox(height: 50),
             ],

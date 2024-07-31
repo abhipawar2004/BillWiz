@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/tables.dart';
-import 'package:flutter_app/widgets/Home1.dart';
-import 'package:flutter_app/widgets/Home2.dart';
+import 'package:flutter_app/widgets/home1.dart';
+import 'package:flutter_app/widgets/home2.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -23,7 +23,7 @@ class Home extends StatelessWidget {
                 child: Image.asset('assets/images/logo.png'),
               ),
               const Home1P(),
-              const SizedBox(height: 20),
+              const SizedBox(height: 50),
               Expanded(
                 child: InkWell(
                 onTap: () {

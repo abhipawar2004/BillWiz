@@ -5,9 +5,10 @@ import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 
 import '../model/Item.dart';
 
+
 class TableItems extends StatefulWidget {
   final Items item;
-  final Function(Items, int, bool) addItemToCart;
+  final Function(Items item, int quantity, bool isHalf) addItemToCart;
 
   const TableItems(this.item, this.addItemToCart, {Key? key}) : super(key: key);
 
@@ -35,8 +36,7 @@ class _TableItemsState extends State<TableItems> {
             children: [
               CircleAvatar(
                 backgroundColor: Colors.white,
-                backgroundImage: AssetImage(item.imagepath,
-                ),
+                backgroundImage: AssetImage(item.imagepath),
                 radius: 40,
               ),
               Text(
@@ -52,10 +52,7 @@ class _TableItemsState extends State<TableItems> {
               ),
               Text(
                 'Choose Quantity (F)',
-                style: GoogleFonts.getFont(
-                  'Jaldi',
-                  fontSize: 8,
-                ),
+                style: GoogleFonts.getFont('Jaldi', fontSize: 8),
               ),
               Container(
                 padding: EdgeInsets.all(5),
@@ -72,7 +69,7 @@ class _TableItemsState extends State<TableItems> {
                       onTap: () {
                         setState(() {
                           if (quantityFull > 0) quantityFull--;
-                          widget.addItemToCart(item, -1, false);
+                          widget.addItemToCart(item, quantityFull, false);
                         });
                       },
                       child: Image.asset('assets/images/minus.png', height: 30),
@@ -90,7 +87,7 @@ class _TableItemsState extends State<TableItems> {
                         speedTransitionLimitCount: 3,
                         onChanged: (int value) => setState(() {
                           quantityFull = value;
-                          widget.addItemToCart(item, value, false);
+                          widget.addItemToCart(item, quantityFull, false);
                         }),
                         firstIncrementDuration: Duration(milliseconds: 250),
                         secondIncrementDuration: Duration(milliseconds: 100),
@@ -105,7 +102,7 @@ class _TableItemsState extends State<TableItems> {
                       onTap: () {
                         setState(() {
                           quantityFull++;
-                          widget.addItemToCart(item, 1, false);
+                          widget.addItemToCart(item, quantityFull, false);
                         });
                       },
                       child: Image.asset('assets/images/plus.png', height: 30),
@@ -133,7 +130,7 @@ class _TableItemsState extends State<TableItems> {
                         onTap: () {
                           setState(() {
                             if (quantityHalf > 0) quantityHalf--;
-                            widget.addItemToCart(item, -1, true);
+                            widget.addItemToCart(item, quantityHalf, true);
                           });
                         },
                         child: Image.asset('assets/images/minus.png', height: 30),
@@ -151,7 +148,7 @@ class _TableItemsState extends State<TableItems> {
                           speedTransitionLimitCount: 3,
                           onChanged: (int value) => setState(() {
                             quantityHalf = value;
-                            widget.addItemToCart(item, value, true);
+                            widget.addItemToCart(item, quantityHalf, true);
                           }),
                           firstIncrementDuration: Duration(milliseconds: 250),
                           secondIncrementDuration: Duration(milliseconds: 100),
@@ -166,7 +163,7 @@ class _TableItemsState extends State<TableItems> {
                         onTap: () {
                           setState(() {
                             quantityHalf++;
-                            widget.addItemToCart(item, 1, true);
+                            widget.addItemToCart(item, quantityHalf, true);
                           });
                         },
                         child: Image.asset('assets/images/plus.png', height: 30),
