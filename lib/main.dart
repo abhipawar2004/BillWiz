@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/home.dart';
+
+import 'pages/tables.dart';
 
 
-import 'package:flutter_app/pages/splash_screen.dart';
-import 'package:flutter_app/pages/tables.dart';
+
 
 
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food App',
-      home: Home(),
+      home: Tables(),
     );
   }
 }

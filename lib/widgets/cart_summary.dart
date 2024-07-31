@@ -7,7 +7,7 @@ import '../model/cart.dart';
 class CartSummary extends StatelessWidget {
   final List<CartItem> cartItems;
 
-  const CartSummary({required this.cartItems});
+  const CartSummary({super.key, required this.cartItems});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,8 @@ class CartSummary extends StatelessWidget {
             '$totalItems Items Added (₹${totalPrice.toStringAsFixed(2)})',
             style: GoogleFonts.getFont('Jost',color: Color(0xffFFFFFF),fontWeight: FontWeight.w600),
           ),
-          Icon(Icons.arrow_forward, color: Colors.white),
+          Image.asset('assets/images/vector.png')
+
         ],
       ),
     );
