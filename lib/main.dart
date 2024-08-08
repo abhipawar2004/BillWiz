@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'pages/splash_screen.dart';
-import 'pages/tables.dart';
 
 void main() => runApp(const MyApp());
 
