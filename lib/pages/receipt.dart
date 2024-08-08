@@ -95,11 +95,11 @@ class Receipt extends StatelessWidget {
                       ),
                       pw.Padding(
                         padding: const pw.EdgeInsets.all(8.0),
-                        child: pw.Text('₹ ${item.rate}', style: pw.TextStyle(fontSize: 14)),
+                        child: pw.Text('Rs. ${item.rate}', style: pw.TextStyle(fontSize: 14)),
                       ),
                       pw.Padding(
                         padding: const pw.EdgeInsets.all(8.0),
-                        child: pw.Text('₹ ${item.total}', style: pw.TextStyle(fontSize: 14)),
+                        child: pw.Text('Rs. ${item.total}', style: pw.TextStyle(fontSize: 14)),
                       ),
                     ]),
                 ],
@@ -113,7 +113,7 @@ class Receipt extends StatelessWidget {
               ),
               pw.Center(
                 child: pw.Text(
-                  'Grand Total: ₹${getTotalAmount()}',
+                  'Grand Total: Rs.${getTotalAmount()}',
                   style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold, color: PdfColors.green),
                 ),
               ),
@@ -253,12 +253,12 @@ class Receipt extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('₹${item.rate}',
+                        child: Text('Rs. ${item.rate}',
                             style: GoogleFonts.getFont('Jaldi', fontSize: 14)),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('₹${item.total}',
+                        child: Text('Rs.${item.total}',
                             style: GoogleFonts.getFont('Jaldi', fontSize: 14)),
                       ),
                     ]),
@@ -274,7 +274,7 @@ class Receipt extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  'Grand Total: ₹${getTotalAmount()}',
+                  'Grand Total: Rs. ${getTotalAmount()}',
                   style: GoogleFonts.getFont('Jost',
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
