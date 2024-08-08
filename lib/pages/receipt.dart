@@ -95,11 +95,11 @@ class Receipt extends StatelessWidget {
                       ),
                       pw.Padding(
                         padding: const pw.EdgeInsets.all(8.0),
-                        child: pw.Text('₹${item.rate}', style: pw.TextStyle(fontSize: 14)),
+                        child: pw.Text('₹ ${item.rate}', style: pw.TextStyle(fontSize: 14)),
                       ),
                       pw.Padding(
                         padding: const pw.EdgeInsets.all(8.0),
-                        child: pw.Text('₹${item.total}', style: pw.TextStyle(fontSize: 14)),
+                        child: pw.Text('₹ ${item.total}', style: pw.TextStyle(fontSize: 14)),
                       ),
                     ]),
                 ],
