@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddMenuPage extends StatefulWidget {
+  
   @override
   _AddMenuPageState createState() => _AddMenuPageState();
 }
@@ -10,7 +11,7 @@ class _AddMenuPageState extends State<AddMenuPage> {
   final _formKey = GlobalKey<FormState>();
 
   String itemName = '';
-  String imagePath = '';
+  String imagepath = '';
   double fullPrice = 0.0;
   double halfPrice = 0.0;
   bool hasHalfOption = false;
@@ -39,7 +40,7 @@ class _AddMenuPageState extends State<AddMenuPage> {
                 decoration: InputDecoration(labelText: 'Image Path'),
                 onChanged: (value) {
                   setState(() {
-                    imagePath = value;
+                    imagepath = value;
                   });
                 },
               ),
@@ -75,10 +76,9 @@ class _AddMenuPageState extends State<AddMenuPage> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // Save the item and go back
                     Navigator.of(context).pop({
                       'itemName': itemName,
-                      'imagePath': imagePath,
+                      'imagepath': imagepath,
                       'fullPrice': fullPrice,
                       'halfPrice': halfPrice,
                       'hasHalfOption': hasHalfOption,

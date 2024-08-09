@@ -14,26 +14,33 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  
-   void _addNewItem() async {
-    final newItemData = await Navigator.of(context).push(
+
+  void _addNewItem(Map<String, dynamic> newItem) {
+    setState(() {
+      menuItems.add(
+        Items(
+          newItem['itemName'],
+          newItem['fullPrice'],
+          newItem['halfPrice'],
+          newItem['hasHalfOption'],
+          newItem['imagePath'],
+        ),
+      );
+    });
+  }
+
+  void _openAddMenuPage(BuildContext context) async {
+    final newItem = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => AddMenuPage(),
       ),
     );
 
-    if (newItemData != null) {
-      setState(() {
-        menuItems.add(Items(
-          newItemData['itemName'],
-          newItemData['fullPrice'],
-          newItemData['hasHalfOption'] ? newItemData['halfPrice'] : null,
-          newItemData['hasHalfOption'],
-          newItemData['imagePath'],
-        ));
-      });
+    if (newItem != null) {
+      _addNewItem(newItem);
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -89,7 +96,7 @@ class _MenuState extends State<Menu> {
                   bottom: 30.0, top: 20), // Add space at the bottom
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddMenuPage()));
+                  _openAddMenuPage(context);
                 },
                 child: Container(
                   height: 55,
