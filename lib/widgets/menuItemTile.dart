@@ -14,6 +14,7 @@ class MenuItemTile extends StatelessWidget {
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
         leading: CircleAvatar(
+          backgroundColor: Colors.white,
           backgroundImage: AssetImage(item.imagepath),
           radius: 25,
         ),

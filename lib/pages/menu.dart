@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/widgets/addnewmenu.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../model/Item.dart';
 import '../model/Items.dart';
 import '../widgets/menuItemTile.dart';
@@ -14,25 +13,26 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-
-  void _addNewItem(Map<String, dynamic> newItem) {
+  // Function to add new item to the menuItems list
+  dynamic _addNewItem(Map<String, dynamic> newItem) {
     setState(() {
       menuItems.add(
         Items(
           newItem['itemName'],
-          newItem['fullPrice'],
-          newItem['halfPrice'],
+          newItem['fullPrice'].toInt(),
+          newItem['halfPrice'].toInt(),
           newItem['hasHalfOption'],
-          newItem['imagePath'],
+          newItem['imagepath'], 
         ),
       );
     });
   }
 
+  
   void _openAddMenuPage(BuildContext context) async {
     final newItem = await Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => AddMenuPage(),
+        builder: (context) => AddMenuPage(onAddItem: _addNewItem,),
       ),
     );
 
@@ -73,9 +73,7 @@ class _MenuState extends State<Menu> {
           children: [
             Expanded(
               child: Card(
-                margin: EdgeInsets.only(
-                  top: 30,
-                ),
+                margin: EdgeInsets.only(top: 30),
                 color: Colors.white,
                 elevation: .5,
                 child: ListView.separated(
@@ -92,8 +90,7 @@ class _MenuState extends State<Menu> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                  bottom: 30.0, top: 20), // Add space at the bottom
+              padding: const EdgeInsets.only(bottom: 30.0, top: 20),
               child: InkWell(
                 onTap: () {
                   _openAddMenuPage(context);
