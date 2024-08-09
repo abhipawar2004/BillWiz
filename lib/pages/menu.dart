@@ -40,7 +40,7 @@ class Menu extends StatelessWidget {
             Expanded(
               child: Card(
                 margin: EdgeInsets.only(top: 30, left: 10, right: 10),
-                color: Colors.white,
+                color: Colors.green,
                 child: ListView.separated(
                   itemCount: menuItems.length,
                   separatorBuilder: (context, index) => const Divider(
