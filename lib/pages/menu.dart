@@ -1,12 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/widgets/addnewmenu.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../model/Item.dart';
 import '../model/Items.dart';
 import '../widgets/menuItemTile.dart';
 
-class Menu extends StatelessWidget {
+class Menu extends StatefulWidget {
   const Menu({super.key});
 
+  @override
+  State<Menu> createState() => _MenuState();
+}
+
+class _MenuState extends State<Menu> {
+  
+   void _addNewItem() async {
+    final newItemData = await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => AddMenuPage(),
+      ),
+    );
+
+    if (newItemData != null) {
+      setState(() {
+        menuItems.add(Items(
+          newItemData['itemName'],
+          newItemData['fullPrice'],
+          newItemData['hasHalfOption'] ? newItemData['halfPrice'] : null,
+          newItemData['hasHalfOption'],
+          newItemData['imagePath'],
+        ));
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,22 +87,27 @@ class Menu extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(
                   bottom: 30.0, top: 20), // Add space at the bottom
-              child: Container(
-                height: 55,
-                width: 250,
-                decoration: BoxDecoration(
-                  color: const Color(0xff128B42),
-                  borderRadius: const BorderRadius.all(Radius.circular(12)),
-                  border: Border.all(color: Colors.black),
-                ),
-                child: Center(
-                  child: Text(
-                    'ADD MENU',
-                    style: GoogleFonts.getFont(
-                      'Jaldi',
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddMenuPage()));
+                },
+                child: Container(
+                  height: 55,
+                  width: 250,
+                  decoration: BoxDecoration(
+                    color: const Color(0xff128B42),
+                    borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    border: Border.all(color: Colors.black),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'ADD MENU',
+                      style: GoogleFonts.getFont(
+                        'Jaldi',
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
