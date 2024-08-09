@@ -39,12 +39,14 @@ class Menu extends StatelessWidget {
           children: [
             Expanded(
               child: Card(
-                margin: EdgeInsets.only(top: 30, left: 10, right: 10),
-                color: Colors.green,
+                margin: EdgeInsets.only(
+                  top: 30,
+                ),
+                color: Colors.white,
+                elevation: .5,
                 child: ListView.separated(
                   itemCount: menuItems.length,
                   separatorBuilder: (context, index) => const Divider(
-                    height:1,
                     color: Color(0xff3FD47A),
                     endIndent: 20,
                     indent: 20,

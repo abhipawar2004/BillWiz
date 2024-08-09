@@ -9,50 +9,62 @@ class MenuItemTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Expanded(
-            child: Text(item.name,
-            style:GoogleFonts.getFont(
-              'Jost',
-              fontSize: 13,
-              fontWeight:FontWeight.w800
-            ),),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+        leading: CircleAvatar(
+          backgroundImage: AssetImage(item.imagepath),
+          radius: 25,
+        ),
+        title: Text(
+          item.name,
+          style: GoogleFonts.jost(
+            fontSize: 14,
+            fontWeight: FontWeight.w800,
           ),
-          if (item.hasHalfOption)
-            Text('₹${item.fullPrice}(F), ₹${item.halfPrice}(H)',
-             style:GoogleFonts.getFont(
-              'Jost',
-              fontSize: 10,
-              fontWeight:FontWeight.bold
-            ),)
-          else
-            Text('₹${item.fullPrice}',
-             style:GoogleFonts.getFont(
-              'Jost',
-              fontSize: 10,
-              fontWeight:FontWeight.bold
-            ),),
-        ],
-      ),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextButton(
-            child: Text('Edit', style:
-            GoogleFonts.getFont('Jaldi',
-            color: Color(0xfff128B42)),),
-            onPressed: () {/* Handle edit */},
-          ),
-          TextButton(
-            child: Text('Delete', style:
-            GoogleFonts.getFont('Jaldi',
-            color: Color(0xff1E1F27))),
-            onPressed: () {/* Handle delete */},
-          ),
-        ],
+        ),
+        subtitle: item.hasHalfOption
+            ? Text(
+                '₹${item.fullPrice} (F), ₹${item.halfPrice} (H)',
+                style: GoogleFonts.jost(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            : Text(
+                '₹${item.fullPrice}',
+                style: GoogleFonts.jost(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextButton(
+              child: Text(
+                'Edit',
+                style: GoogleFonts.jaldi(
+                  color: Color(0xff28B42F), // Changed to a lighter green
+                  // Increased font weight
+                ),
+              ),
+              onPressed: () {
+                // Handle edit
+              },
+            ),
+            TextButton(
+              child: Text(
+                'Delete',
+                style: GoogleFonts.jaldi(
+                  color: Color(0xffB42828),
+                ),
+              ),
+              onPressed: () {},
+            ),
+          ],
+        ),
       ),
     );
   }
