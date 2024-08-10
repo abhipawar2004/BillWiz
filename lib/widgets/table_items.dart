@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -36,7 +38,9 @@ class _TableItemsState extends State<TableItems> {
             children: [
               CircleAvatar(
                 backgroundColor: Colors.white,
-                backgroundImage: AssetImage(item.imagepath),
+                backgroundImage: item.imagepath.startsWith('/')
+                    ? FileImage(File(item.imagepath))
+                    : AssetImage(item.imagepath) as ImageProvider,
                 radius: 40,
               ),
               Text(
