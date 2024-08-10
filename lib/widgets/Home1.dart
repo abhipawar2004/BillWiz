@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/menu.dart';
-import 'package:flutter_app/pages/tables.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+
+import '../pages/menu.dart';
+import '../pages/tables.dart';
 
 class Home1P extends StatelessWidget {
   const Home1P({super.key});

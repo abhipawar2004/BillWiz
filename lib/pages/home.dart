@@ -1,7 +1,9 @@
+import 'package:BillWiz/pages/tables.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/tables.dart';
-import 'package:flutter_app/widgets/home1.dart';
-import 'package:flutter_app/widgets/home2.dart';
+
+
+import '../widgets/home1.dart';
+import '../widgets/home2.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

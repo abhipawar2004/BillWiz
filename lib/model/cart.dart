@@ -1,4 +1,6 @@
-import 'package:flutter_app/model/Item.dart';
+
+
+import 'package:BillWiz/model/Item.dart';
 
 class CartItem {
   final Items item;

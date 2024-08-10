@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,19 +25,18 @@ class _AddMenuPageState extends State<AddMenuPage> {
   bool hasHalfOption = false;
 
   Future<void> _pickImage() async {
-  print("Image picker triggered");
-  final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    print("Image picker triggered");
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
 
-  if (pickedFile != null) {
-    print("Image picked: ${pickedFile.path}");
-    setState(() {
-      _image = File(pickedFile.path); // Convert XFile to File
-    });
-  } else {
-    print("No image selected");
+    if (pickedFile != null) {
+      print("Image picked: ${pickedFile.path}");
+      setState(() {
+        _image = File(pickedFile.path); // Convert XFile to File
+      });
+    } else {
+      print("No image selected");
+    }
   }
-}
-
 
   void _saveItem() {
     if (_formKey.currentState!.validate() && _image != null) {
@@ -51,7 +51,7 @@ class _AddMenuPageState extends State<AddMenuPage> {
       Navigator.of(context).pop();
     } else if (_image == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please select an image')),
+        const SnackBar(content: Text('Please select an image')),
       );
     }
   }
@@ -90,9 +90,11 @@ class _AddMenuPageState extends State<AddMenuPage> {
             key: _formKey,
             child: SingleChildScrollView(
               child: Column(
-                children:[
+                children: [
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Item Name'),
+                    autocorrect: true,
+                    cursorColor: Color(0xFF128B42),
+                    decoration: const InputDecoration(labelText: 'Item Name',),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter the item name';
@@ -105,9 +107,9 @@ class _AddMenuPageState extends State<AddMenuPage> {
                       });
                     },
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Full Price'),
+                    decoration: const InputDecoration(labelText: 'Full Price'),
                     keyboardType: TextInputType.number,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -125,7 +127,7 @@ class _AddMenuPageState extends State<AddMenuPage> {
                     },
                   ),
                   CheckboxListTile(
-                    title: Text('Has Half Option?'),
+                    title: const Text('Has Half Option?'),
                     value: hasHalfOption,
                     onChanged: (bool? value) {
                       setState(() {
@@ -135,11 +137,11 @@ class _AddMenuPageState extends State<AddMenuPage> {
                   ),
                   if (hasHalfOption)
                     TextFormField(
-                      decoration: InputDecoration(labelText: 'Half Price'),
+                      decoration:
+                          const InputDecoration(labelText: 'Half Price'),
                       keyboardType: TextInputType.number,
                       validator: (value) {
-                        if (hasHalfOption &&
-                            (value == null || value.isEmpty)) {
+                        if (hasHalfOption && (value == null || value.isEmpty)) {
                           return 'Please enter the half price';
                         }
                         if (value != null &&
@@ -155,18 +157,31 @@ class _AddMenuPageState extends State<AddMenuPage> {
                         });
                       },
                     ),
-                    SizedBox(height: 20,),
-                      ElevatedButton(
-                    onPressed: _pickImage,  // Trigger image picker
-                    child: Text('Select Image',
-                        style: GoogleFonts.getFont('Jost')),
+                  const SizedBox(
+                    height: 20,
                   ),
-                  SizedBox(height: 10),
+                  ElevatedButton(
+
+                    style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Color(0xFF128B42))),
+                    onPressed: _pickImage, // Trigger image picker
+                    child: Text('Upload image',
+                        style: GoogleFonts.getFont('Jost',color: Colors.white)),
+                  ),
+                  const SizedBox(height: 10),
                   _image != null
-                      ? Image.file(_image!,
-                          height: 200, fit: BoxFit.cover)
-                      : Text('No image selected'),
-                  SizedBox(height: 20),
+                      ? Container(
+                          height: 250,
+                          width: 350,
+                          child: DottedBorder(
+                              color: Colors.black,
+                              strokeWidth: 2,
+                              dashPattern: [8, 4],
+                              child: Center(
+                                  child: Image.file(_image!,
+                                      height: 200, fit: BoxFit.cover))),
+                        )
+                      : const Text('No image selected'),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: _saveItem,
                     child:

@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/model/Item.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+
+import '../model/Item.dart';
 
 class MenuItemTile extends StatelessWidget {
   final Items item;

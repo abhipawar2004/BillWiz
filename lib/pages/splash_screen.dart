@@ -1,8 +1,9 @@
 import 'dart:async';
 
+import 'package:BillWiz/pages/home.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app/pages/home.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {

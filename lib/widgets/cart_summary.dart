@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/model/cart.dart';
+
 
 import 'package:google_fonts/google_fonts.dart';
 
+import '../model/cart.dart';
 import '../model/order.dart';
 import '../pages/receipt.dart';
 
