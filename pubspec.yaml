@@ -27,8 +27,8 @@ dev_dependencies:
   flutter_svg: ^2.0.10+1
 flutter_icons:
   android: true
-  
   image_path: "assets/images/APP_LOGO.png"
+  
 flutter:
   assets:
     - assets/images/
