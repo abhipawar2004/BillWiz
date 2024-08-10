@@ -24,14 +24,19 @@ class _AddMenuPageState extends State<AddMenuPage> {
   bool hasHalfOption = false;
 
   Future<void> _pickImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+  print("Image picker triggered");
+  final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
 
-    if (pickedFile != null) {
-      setState(() {
-        _image = File(pickedFile.path); // Convert XFile to File
-      });
-    }
+  if (pickedFile != null) {
+    print("Image picked: ${pickedFile.path}");
+    setState(() {
+      _image = File(pickedFile.path); // Convert XFile to File
+    });
+  } else {
+    print("No image selected");
   }
+}
+
 
   void _saveItem() {
     if (_formKey.currentState!.validate() && _image != null) {
