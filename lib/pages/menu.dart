@@ -73,7 +73,7 @@ class _MenuState extends State<Menu> {
           children: [
             Expanded(
               child: Card(
-                margin: EdgeInsets.only(top: 30),
+                margin: EdgeInsets.only(top: 30,left:10,right:10),
                 color: Colors.white,
                 elevation: .5,
                 child: ListView.separated(
