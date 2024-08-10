@@ -18,13 +18,17 @@ dependencies:
   pdf: ^3.11.0
   image_picker: ^1.1.2
   dotted_border: ^2.1.0
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
   flutter_svg: ^2.0.10+1
-
+flutter_icons:
+  android: true
+  
+  image_path: "assets/images/APP_LOGO.png"
 flutter:
   assets:
     - assets/images/
