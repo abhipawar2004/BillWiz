@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/model/Item.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +17,9 @@ class MenuItemTile extends StatelessWidget {
         contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
         leading: CircleAvatar(
           backgroundColor: Colors.white,
-          backgroundImage: AssetImage(item.imagepath),
+          backgroundImage: item.imagepath.startsWith('/')
+                    ? FileImage(File(item.imagepath))
+                    : AssetImage(item.imagepath) as ImageProvider,
           radius: 25,
         ),
         title: Text(
