@@ -16,7 +16,8 @@ class Home extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Container(
+ 
+       body: Container(
           margin: const EdgeInsets.only(left: 25, right: 25, top: 20),
           child: Column(
             children: [
