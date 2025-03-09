@@ -1,0 +1,24 @@
+# C/C++ build system timings
+create_cxx_tasks
+  create-initial-cxx-model
+    create-module-model 10ms
+    [gap of 44ms]
+    create-X86-model 10ms
+    create-module-model 11ms
+    [gap of 26ms]
+  create-initial-cxx-model completed in 106ms
+  [gap of 23ms]
+create_cxx_tasks completed in 129ms
+
+# C/C++ build system timings
+create_cxx_tasks
+  create-initial-cxx-model 91ms
+  [gap of 15ms]
+create_cxx_tasks completed in 106ms
+
+# C/C++ build system timings
+create_cxx_tasks
+  create-initial-cxx-model 77ms
+  [gap of 16ms]
+create_cxx_tasks completed in 93ms
+
